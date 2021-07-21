@@ -2,9 +2,8 @@
 
 ```
 Se puede usar el siguient repositorio:
-jmespza/odoo-ubuntu:14.0   <- Latest v14 image
+jmespza/odoo-ubuntu:13.0   <- Latest v14 image
 
-Se usó el repositorio de junari/odoo docker.
 ```
 Anotaciones Open Source Docker image
 
@@ -41,7 +40,7 @@ your own version, or use our `odoo-config` tool to update individual settings.
 To override individual settings, create and build you own `Dockerfile` with content such as the below:
 
 ```Dockerfile
-FROM jmespza/odoo-ubuntu:14.0
+FROM jmespza/odoo-ubuntu:13.0
 
 RUN odoo-config addons_path+=,/opt/odoo/custom_addons/my_lib/addons \
                 list_db=True
@@ -72,7 +71,7 @@ docker run --rm -it \
     -v ruta-odoo-data:/opt/odoo/data \
     -p 8069:8069 \
     --env-file=odoo.env \
-    jmespza/odoo-ubuntu:14.0 \
+    jmespza/odoo-ubuntu:13.0 \
     odoo -d odoo14 -i base --without-demo=all --load-language=es_PE
 ```
 
@@ -88,7 +87,7 @@ docker run --rm -it \
     -v ruta-odoo-data:/opt/odoo/data \
     -p 8069:8069 \
     --env-file=odoo.env \
-    jmespza/odoo-ubuntu:14.0 odoo -d odoo14
+    jmespza/odoo-ubuntu:13.0 odoo -d odoo14
 ```
 
 se puede compartir con -v las rutas /opt/odoo/.vscode, /opt/odoo/custom_addons, /home/odoo
@@ -129,3 +128,4 @@ You can also pass any `odoo-bin` args via `run.sh`, e.g.:
 # Re-build the images (with the latest ubuntu)
 ./build.sh
 ```
+Se usó el repositorio de junari/odoo docker.
