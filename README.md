@@ -2,13 +2,10 @@
 
 ```
 Se puede usar el siguient repositorio:
-jhonny/odoo:14.0   <- Latest v14 image
+jmespza/odoo-ubuntu:14.0   <- Latest v14 image
 
 Se usó el repositorio de junari/odoo docker.
 ```
-
-# ** README NEEDS UPDATING FOR RECENT v14 CHANGES **
-
 Anotaciones Open Source Docker image
 
 * Odoo Community Edition, installed from source in `/opt/odoo`
@@ -44,7 +41,7 @@ your own version, or use our `odoo-config` tool to update individual settings.
 To override individual settings, create and build you own `Dockerfile` with content such as the below:
 
 ```Dockerfile
-FROM jhonny/odoo:14.0
+FROM jmespza/odoo-ubuntu:14.0
 
 RUN odoo-config addons_path+=,/opt/odoo/custom_addons/my_lib/addons \
                 list_db=True
@@ -57,7 +54,8 @@ Para desarrollo se recomienda crear un nuevo Dockerfile agregando los cambios ne
 
 The following example walks you through creating a new Odoo database using this image:
 
-1. In a new folder, create an `odoo.env` file, as above. Se colocará la configuración de Odoo a Postgres.
+1. In a new folder, create an `odoo.env` file, as above. 
+Se colocará la configuración de Odoo a Postgres.
 
 2. Create a blank PostgreSQL database owned by your Odoo database user, e.g.
 
@@ -74,7 +72,7 @@ docker run --rm -it \
     -v ruta-odoo-data:/opt/odoo/data \
     -p 8069:8069 \
     --env-file=odoo.env \
-    jhonny/odoo:14.0 \
+    jmespza/odoo-ubuntu:14.0 \
     odoo -d odoo14 -i base --without-demo=all --load-language=es_PE
 ```
 
@@ -90,8 +88,10 @@ docker run --rm -it \
     -v ruta-odoo-data:/opt/odoo/data \
     -p 8069:8069 \
     --env-file=odoo.env \
-    jhonny/odoo:14.0 odoo -d odoo14
+    jmespza/odoo-ubuntu:14.0 odoo -d odoo14
 ```
+
+se puede compartir con -v las rutas /opt/odoo/.vscode, /opt/odoo/custom_addons, /home/odoo
 
 Your Odoo system should now be accessible at http://localhost:8069 o http://172.17.0.1:8069/. You can log
 in using the default user: admin, password: admin
