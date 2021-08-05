@@ -3,7 +3,7 @@ set -e
 cd odoo
 if [ "$1" = 'odoo' ]; then
     shift
-    exec ./odoo-bin \
+    exec ./odoo.py \
         "--db_host=$DB_HOST" \
         "--db_port=$DB_PORT" \
         "--db_user=$DB_USER" \
@@ -11,7 +11,7 @@ if [ "$1" = 'odoo' ]; then
         $ODOO_EXTRA_ARGS "$@"
 elif [ "$1" = 'odoo-shell' ]; then
     shift
-    exec ./odoo-bin shell \
+    exec ./odoo.py shell \
         "--db_host=$DB_HOST" \
         "--db_port=$DB_PORT" \
         "--db_user=$DB_USER" \
