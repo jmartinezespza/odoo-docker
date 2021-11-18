@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER Elico Corp <webmaster@elico-corp.com>
+MAINTAINER Jhonny Martinez <jmartinezespza@gmail.com>
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
@@ -16,7 +16,7 @@ RUN apt update \
   && update-locale LC_ALL=es_PE.UTF-8 LANG=es_PE.UTF-8
 
 # Install APT dependencies
-ADD sources/apt.txt /opt/sources/apt.txt
+ADD src/apt.txt /opt/sources/apt.txt
 RUN apt update \
   && awk '! /^ *(#|$)/' /opt/sources/apt.txt | xargs -r apt install -yq
 
@@ -46,7 +46,7 @@ WORKDIR /opt/odoo
 
 # Install Odoo and dependencies from source and check out specific revision
 USER odoo
-RUN git clone --branch=$ODOO_VERSION --depth=1000 https://github.com/odoo/odoo.git odoo
+RUN git clone -b $ODOO_VERSION --single-branch --depth 100 https://github.com/odoo/odoo.git odoo
 RUN cd odoo && git reset --hard $ODOO_REVISION
 
 USER root
