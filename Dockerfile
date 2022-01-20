@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER Jhonny Martinez <jmartinezespza@gmail.com>
+LABEL author="Jhonny Martinez <jmartinezespza@gmail.com>"
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 
@@ -34,7 +34,7 @@ RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-
 RUN apt update && apt install -yq postgresql-client
 
 # Install Node
-RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 
 # Create odoo user and directories and set permissions

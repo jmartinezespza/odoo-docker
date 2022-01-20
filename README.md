@@ -2,7 +2,7 @@
 
 ```
 Se puede usar el siguient repositorio:
-jmespza/odoo-ubuntu:13.0   <- Latest v14 image
+jmespza/odoo-ubuntu:15.0   <- Latest v15 image
 
 ```
 Anotaciones Open Source Docker image
@@ -40,7 +40,7 @@ your own version, or use our `odoo-config` tool to update individual settings.
 To override individual settings, create and build you own `Dockerfile` with content such as the below:
 
 ```Dockerfile
-FROM jmespza/odoo-ubuntu:13.0
+FROM jmespza/odoo-ubuntu:15.0
 
 RUN odoo-config addons_path+=,/opt/odoo/custom_addons/my_lib/addons \
                 list_db=True
@@ -59,7 +59,7 @@ Se colocará la configuración de Odoo a Postgres.
 2. Create a blank PostgreSQL database owned by your Odoo database user, e.g.
 
 ```sql
-CREATE DATABASE odoo14 OWNER odoo ENCODING UTF8;
+CREATE DATABASE odoo15 OWNER odoo ENCODING UTF8;
 ```
 Se puede usar modo comando o PgAdmin para crear el usuario y base de datos. 
 
