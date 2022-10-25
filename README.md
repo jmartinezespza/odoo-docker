@@ -1,8 +1,8 @@
-# Jhonny Odoo Docker image Ubuntu 20.04
+# Jhonny Odoo Docker image Ubuntu 22.04
 
 ```
 Se puede usar el siguient repositorio:
-jmespza/odoo-ubuntu:15.0   <- Latest v15 image
+jmespza/odoo-ubuntu:16.0   <- Latest v15 image
 
 ```
 Anotaciones Open Source Docker image
@@ -40,7 +40,7 @@ your own version, or use our `odoo-config` tool to update individual settings.
 To override individual settings, create and build you own `Dockerfile` with content such as the below:
 
 ```Dockerfile
-FROM jmespza/odoo-ubuntu:15.0
+FROM jmespza/odoo-ubuntu:16.0
 
 RUN odoo-config addons_path+=,/opt/odoo/custom_addons/my_lib/addons \
                 list_db=True
