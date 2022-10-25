@@ -4,7 +4,6 @@ git
 libssl-dev
 libpq-dev
 libxrender1
-python-dev
 python3-pip
 sudo
 python3-dev

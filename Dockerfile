@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL author="Jhonny Martinez <jmartinezespza@gmail.com>"
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
@@ -19,6 +19,10 @@ RUN apt update \
 ADD src/apt.txt /opt/sources/apt.txt
 RUN apt update \
   && awk '! /^ *(#|$)/' /opt/sources/apt.txt | xargs -r apt install -yq
+
+RUN apt install -yq wget
+RUN wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1-1ubuntu2.1~18.04.20_amd64.deb \
+  && dpkg -i libssl1.1_1.1.1-1ubuntu2.1~18.04.20_amd64.deb
 
 # Install wkhtmltopdf based on QT5
 ADD https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.focal_amd64.deb \
